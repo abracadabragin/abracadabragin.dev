@@ -1,0 +1,29 @@
+{
+  "name": "abracadabragin.dev-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/abracadabragin.dev-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/abracadabragin.dev-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "abracadabragin.dev:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "abracadabragin.dev:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/abracadabragin.dev-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["abracadabragin.dev"]
+}
